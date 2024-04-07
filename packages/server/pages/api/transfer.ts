@@ -1,7 +1,8 @@
 import { PublicKey, sendAndConfirmRawTransaction, Transaction } from '@solana/web3.js';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import base58 from 'bs58';
-import { signWithTokenFee, core } from '@solana/octane-core';
+import { signWithTokenFee, core } from '@candypay/solana-octane-core';
+// import { signWithTokenFee, core } from '../../../core/src';
 import {
     cache,
     connection,
@@ -70,7 +71,7 @@ export default async function (request: NextApiRequest, response: NextApiRespons
         // Respond with the confirmed transaction signature
         response.status(200).send({ status: 'ok', signature });
     } catch (error) {
-        let message = '';
+        let message = "unexpected error";
         if (error instanceof Error) {
             message = error.message;
         }
